@@ -1,0 +1,14 @@
+*.pyc
+*.project
+.pydevproject
+.settings
+.idea
+logs
+gikoo.db
+.DS_Store
+*.txt
+*.rdb
+*.patch
+*.xls
+*.db
+*.bat
