@@ -24,6 +24,7 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
+#         'ENGINE': 'django.db.backends.dummy', 
     }
 }
 
@@ -98,6 +99,8 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -107,6 +110,19 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+#===============================================================================
+# mongodb config
+#===============================================================================
+# AUTHENTICATION_BACKENDS = (
+#     'mongoengine.django.auth.MongoEngineBackend',
+# )
+# Django provides session cookie, which expires after `SESSION_COOKIE_AGE` seconds, 
+#but does not delete cookie at sessions backend, so 'mongoengine.django.sessions' supports mongodb TTL.
+# SESSION_ENGINE = 'mongoengine.django.sessions'
+#SESSION_SERIALIZER is only necessary in Django 1.6 as the default serializer is based around JSON 
+#and does not know how to convert bson.objectid.ObjectId instances to strings.
+# SESSION_SERIALIZER = 'mongoengine.django.sessions.BSONSerializer'
+
 
 ROOT_URLCONF = 'InterestSocial.urls'
 
@@ -119,6 +135,8 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+AUTH_USER_MODEL = 'people.People'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,6 +148,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging
