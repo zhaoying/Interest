@@ -4,7 +4,10 @@
 IS_CONFIG = {
     "mongo" : {'host': 'localhost', 'port': 27017, 'db': 'InterestSocial'},
 }
-
+URL_PREFIX = {
+    "v1_w" : "api/v1/w/",
+    "v1_r" : "api/v1/r/"
+}
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -137,6 +140,40 @@ TEMPLATE_DIRS = (
 
 AUTH_USER_MODEL = 'people.People'
 
+
+# guardian settings
+AUTHENTICATION_BACKENDS = (    
+    'django.contrib.auth.backends.ModelBackend', # default
+#     'guardian.backends.ObjectPermissionBackend',
+)
+
+PASSWORD_HASHERS = (    
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.SHA1PasswordHasher',
+    'django.contrib.auth.hashers.CryptPasswordHasher',
+    'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher',                   
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+)
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+#         'util.permissions.GikooPermissions',
+        'rest_framework.permissions.DjangoModelPermissions',
+    ),
+    'PAGINATE_BY': 8,
+    'PAGINATE_BY_PARAM': 'count',
+    'FILTER_BACKEND': 'rest_framework.filters.DjangoFilterBackend',
+    'DATETIME_FORMAT': ("%Y-%m-%d %H:%M:%S"),
+    #'DATETIME_INPUT_FORMATS': ("%Y-%m-%d %H:%M:%S"),
+}
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -151,6 +188,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'south',
+    'people'
 )
 
 # A sample logging configuration. The only tangible logging

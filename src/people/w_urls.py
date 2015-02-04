@@ -6,6 +6,7 @@ Created on Feb 3, 2015
 '''
 
 from django.conf.urls import patterns, url
+from people.views import UserRegister
 
 
 urlpatterns = patterns('people.views',
@@ -13,7 +14,7 @@ urlpatterns = patterns('people.views',
     # write API
     #===========================================================================
     # 用户注册
-    #url(r'^(?P<pk>\d+)/$', CourseDetailV2.as_view(), name='course-detail'),
+    url(r'^$', UserRegister.as_view(), name='people-regist'),
     #===========================================================================
     # read API
     #===========================================================================
