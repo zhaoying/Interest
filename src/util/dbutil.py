@@ -21,3 +21,5 @@ def get_mongo_db():
 class ISDocument(Document):
     last_update_time = mongoengine.DateTimeField()
     is_active = mongoengine.BooleanField(defalut=True)
+    
+class ISBaseModel(models.Model):
