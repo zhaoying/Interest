@@ -164,8 +164,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-#         'util.permissions.GikooPermissions',
-        'rest_framework.permissions.DjangoModelPermissions',
+#         'rest_framework.permissions.DjangoModelPermissions',
+            'InterestSocial.permissions.AccessPermissions',
     ),
     'PAGINATE_BY': 8,
     'PAGINATE_BY_PARAM': 'count',
@@ -188,7 +188,8 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'south',
-    'people'
+    'people',
+    'interest'
 )
 
 # A sample logging configuration. The only tangible logging

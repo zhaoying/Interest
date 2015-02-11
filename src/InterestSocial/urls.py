@@ -37,4 +37,5 @@ urlpatterns = patterns('',
     # read API
     #===========================================================================
     v1_r_url(r'people/', include('people.r_urls', namespace='people')),
+    v1_r_url(r'interest/', include('interest.r_urls', namespace='people')),
 )

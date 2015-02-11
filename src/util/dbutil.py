@@ -22,4 +22,6 @@ class ISDocument(Document):
     last_update_time = mongoengine.DateTimeField()
     is_active = mongoengine.BooleanField(defalut=True)
     
-class ISBaseModel(models.Model):
+    
+# class ISBaseModel(models.Model):
+    

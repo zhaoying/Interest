@@ -11,6 +11,8 @@ from rest_framework.renderers import JSONRenderer
 from django.http.response import HttpResponse
 from util.serializers import GeneralResponse, GeneralResponseSerializer
 from rest_framework import status
+from rest_framework.views import APIView
+from InterestSocial import settings
 
 class ErrorCode(CONST):
     SUCCESS = 0
@@ -51,7 +53,9 @@ def generalJsonResponse(status, code, detail=None):
     return HttpResponse(JSONRenderer().render(generalResponseData(code, detail)), 
                         content_type="application/json", status=status)
     
+
             
+
 class ISCreateAPIView(CreateAPIView):
     def post(self, request, *args, **kwargs):
         super(ISCreateAPIView, self).post(request, *args, **kwargs)

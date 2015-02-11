@@ -6,15 +6,14 @@ Created on Feb 3, 2015
 '''
 
 from django.conf.urls import patterns, url
-from people.views import OwnInfo, UserInterestFocusList
+from people.views import OwnInfo
+from interest.views import InterestListView
 
 
 urlpatterns = patterns('people.views',
     #===========================================================================
     # read API
     #===========================================================================
-    #个人信息
-    url(r'^own/$', OwnInfo.as_view(), name='people-regist'),
-    #关注的兴趣列表
-    url(r'^interest/$', UserInterestFocusList.as_view(), name="people-interest-list")
+    #兴趣列表
+    url(r'^$',InterestListView.as_view(), name="interest-list")
 )
